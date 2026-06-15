@@ -1,7 +1,7 @@
-﻿/* ═══════════════════════════════════════════════
+/* ═══════════════════════════════════════════════
    STEEL FORGE — styles.css
    Industrial Orange Theme | Bebas Neue + Roboto
-   Version: RU | v1.0
+   Version: EN | v1.0
 ═══════════════════════════════════════════════ */
 
 /* ── CSS VARIABLES ── */
@@ -11,7 +11,7 @@
   --accent2:   #E85D2F;
   --white:     #ffffff;
   --text:      #e8e8e8;
-  --text-dim:  #aaaaaa;
+  --text-dim:  rgba(255,255,255,0.9);
   --card-bg:   rgba(0, 0, 0, 0.50);
   --card-border: rgba(255, 107, 53, 0.4);
   --card-hover-border: rgba(255, 107, 53, 1);
@@ -20,12 +20,14 @@
 
   /* 8-direction black text-shadow */
   --ts:
-    1px  1px 0 rgba(0,0,0,1),
-   -1px -1px 0 rgba(0,0,0,1),
-    1px -1px 0 rgba(0,0,0,1),
-   -1px  1px 0 rgba(0,0,0,1),
-    0    0   8px rgba(0,0,0,0.9),
-    0    0  20px rgba(0,0,0,0.7);
+   -1px -1px 0 #000,
+    1px -1px 0 #000,
+   -1px  1px 0 #000,
+    1px  1px 0 #000,
+    0   -1px 0 #000,
+    0    1px 0 #000,
+   -1px  0   0 #000,
+    1px  0   0 #000;
 }
 
 /* ── RESET & BASE ── */
@@ -87,6 +89,20 @@ img { display: block; max-width: 100%; }
   width: min(400px, 90vw);
 }
 
+.loader-logo-img {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  margin: 0 auto 16px;
+  display: block;
+  animation: logoPulse 2s ease-in-out infinite;
+}
+
+@keyframes logoPulse {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50%      { opacity: 1;   transform: scale(1.06); }
+}
+
 .loader-logo {
   font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(2.5rem, 8vw, 4.5rem);
@@ -121,6 +137,15 @@ img { display: block; max-width: 100%; }
   border-radius: 2px;
   transition: width 0.2s ease;
   box-shadow: 0 0 12px rgba(255, 107, 53, 0.6);
+}
+
+.loader-pct {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  text-shadow: none;
+  margin-bottom: 0.5rem;
 }
 
 .loader-text {
@@ -716,7 +741,8 @@ img { display: block; max-width: 100%; }
 .portfolio-num {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 3rem;
-  color: rgba(255,107,53,0.15);
+  color: var(--accent);
+  opacity: 1;
   line-height: 1;
   position: absolute;
   top: 16px; right: 20px;
@@ -1102,3 +1128,19 @@ a.contact-val:hover { color: var(--accent); }
 
 /* Prevent any horizontal overflow */
 body, #ui-layer, .stage { overflow-x: hidden; }
+
+/* ── CONTACT INFO CARD (GlobalPlus template) ── */
+.contact-info-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 4px;
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  padding: 40px 36px;
+  max-width: 500px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

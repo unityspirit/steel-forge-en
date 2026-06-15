@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>STEEL FORGE — Metalworking Plant</title>
-  <meta name="description" content="Full-cycle metalworking. Welding TIG/MIG/MAG, laser cutting to 0.1mm, metal structures. ISO 9001 certified." />
-  <meta name="keywords" content="metalworking, welding, laser cutting, metal structures, steel fabrication" />
-  <meta property="og:title" content="STEEL FORGE — Metalworking Plant" />
-  <meta property="og:description" content="Welding, laser cutting, metal structures. TIG/MIG/MAG. Precision to 0.1mm. ISO 9001." />
+  <title>STEEL FORGE — Precision Metalworking & Fabrication</title>
+  <meta name="description" content="STEEL FORGE — full-cycle metal fabrication. Welding, laser cutting, structural steelwork, CNC machining. 16 years of experience, 3,000+ projects delivered worldwide." />
+  <meta name="keywords" content="metalworking, welding, laser cutting, steel fabrication, CNC machining, structural steel, custom metalwork, STEEL FORGE" />
+  <meta property="og:title" content="STEEL FORGE — Precision Metalworking" />
+  <meta property="og:description" content="Welding, steel fabrication, laser cutting. From blueprint to installation. 16 years. 3,000+ projects." />
   <meta property="og:image" content="images/logo.svg" />
-  <meta property="og:url" content="https://steelforge.ru" />
+  <meta property="og:url" content="https://unityspirit.github.io/steel-forge-en/" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="en_US" />
   <link rel="icon" type="image/png" href="images/logo.svg" />
@@ -17,131 +17,324 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+
+  <canvas id="gl-canvas"></canvas>
+  <div class="grain-overlay"></div>
+
   <div id="loader">
     <div class="loader-inner">
-      <img src="images/logo.svg" alt="STEEL FORGE" style="width:80px;height:80px;object-fit:contain;margin-bottom:16px;filter:drop-shadow(0 0 20px rgba(255,107,53,0.4))" />
-      <div class="loader-logo">STEEL <span style="color:#FF6B35">FORGE</span></div>
-      <div class="progress-track"><div id="progress-bar"></div></div>
-      <div class="loader-text">Loading...</div>
+      <img src="images/logo.svg" alt="STEEL FORGE" class="loader-logo-img" />
+      <div class="loader-logo">STEEL FORGE</div>
+      <div class="loader-tagline">Iron doesn't forgive mistakes — we don't make them</div>
+      <div class="loader-bar-wrap"><div id="progress-bar"></div></div>
+      <p class="loader-pct" id="loader-pct">0%</p>
+      <div class="loader-text">LOADING...</div>
     </div>
   </div>
-  <canvas id="gl-canvas"></canvas>
-  <canvas id="particle-canvas"></canvas>
-  <div class="grain-overlay"></div>
+
   <nav class="navbar" id="navbar">
-    <div class="nav-inner">
-      <a href="#hero" class="nav-logo"><img src="images/logo.svg" alt="STEEL FORGE" onerror="this.style.display='none'" /><span>STEEL FORGE</span></a>
-      <ul class="nav-links">
-        <li><a href="#services" class="nav-link">Services</a></li>
-        <li><a href="#portfolio" class="nav-link">Projects</a></li>
-        <li><a href="#process" class="nav-link">Process</a></li>
-        <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#contact" class="nav-link">Quote</a></li>
-      </ul>
-      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="nav-brand">
+      <img src="images/logo.svg" alt="STEEL FORGE" class="nav-logo" />
+      <span class="nav-name">STEEL FORGE</span>
     </div>
+    <ul class="nav-links">
+      <li><a href="#services" class="nav-link" data-section="1">Services</a></li>
+      <li><a href="#portfolio" class="nav-link" data-section="2">Projects</a></li>
+      <li><a href="#process" class="nav-link" data-section="3">Process</a></li>
+      <li><a href="#about" class="nav-link" data-section="4">About</a></li>
+      <li><a href="#contact" class="nav-link" data-section="5">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Get a Quote</a>
+    <button class="burger" id="burger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
-  <div class="nav-drawer" id="nav-drawer" hidden>
-    <div class="drawer-backdrop" id="drawer-backdrop"></div>
-    <div class="drawer-panel">
-      <button class="drawer-close" id="drawer-close">✕</button>
-      <ul>
-        <li><a href="#services" class="drawer-link">Services</a></li>
-        <li><a href="#portfolio" class="drawer-link">Projects</a></li>
-        <li><a href="#process" class="drawer-link">Process</a></li>
-        <li><a href="#about" class="drawer-link">About</a></li>
-        <li><a href="#contact" class="drawer-link">Quote</a></li>
-      </ul>
+
+  <div class="nav-drawer" id="nav-drawer">
+    <button class="drawer-close" id="drawer-close" aria-label="Close menu">&#10005;</button>
+    <ul class="drawer-links">
+      <li><a href="#hero" class="drawer-link">Home</a></li>
+      <li><a href="#services" class="drawer-link">Services</a></li>
+      <li><a href="#portfolio" class="drawer-link">Projects</a></li>
+      <li><a href="#process" class="drawer-link">Process</a></li>
+      <li><a href="#about" class="drawer-link">About</a></li>
+      <li><a href="#contact" class="drawer-link">Contact</a></li>
+    </ul>
+    <div class="drawer-phone">
+      <a href="mailto:contact@unityspiritpartners.com" style="color:inherit;text-decoration:none;">contact@unityspiritpartners.com</a><br>
+      <a href="https://unityspiritpartners.com" style="color:inherit;text-decoration:none;font-size:0.9rem;opacity:0.8;">unityspiritpartners.com</a>
     </div>
   </div>
-  <div id="ui-layer"><div class="stage">
-    <section class="page is-active" data-index="0" id="hero">
-      <div class="hero-content">
-        <div class="hero-badge reveal-3d">SINCE 2008</div>
-        <h1 class="hero-title reveal-3d">STEEL<br/>FORGE</h1>
-        <p class="hero-subtitle reveal-3d">Metal. Precision. Strength.</p>
-        <p class="hero-desc reveal-3d">Welding, laser cutting, metal structures.<br/>From project drawing to final installation.</p>
-        <div class="hero-btns reveal-3d">
-          <a href="#services" class="btn-primary">Our Services</a>
-          <a href="#contact" class="btn-outline">Get a Quote</a>
-        </div>
-        <div class="hero-facts reveal-3d">
-          <div class="fact-item"><span class="fact-num">16</span><span class="fact-label">years</span></div>
-          <div class="fact-item"><span class="fact-num">3000+</span><span class="fact-label">objects</span></div>
-          <div class="fact-item"><span class="fact-num">ISO</span><span class="fact-label">9001</span></div>
-        </div>
-      </div>
-      <div class="scroll-hint reveal-3d"><span>↓</span></div>
-    </section>
-    <section class="page" data-index="1" id="services">
-      <div class="section-content">
-        <div class="section-header reveal-3d"><h2 class="section-title">SERVICES</h2><p class="section-subtitle">Full metalworking cycle</p></div>
-        <div class="cards-grid reveal-3d">
-          <div class="card"><div class="card-icon">⚙️</div><h3 class="card-title">Welding</h3><p class="card-text">TIG, MIG, MAG welding for any metals and alloys</p></div>
-          <div class="card"><div class="card-icon">🔬</div><h3 class="card-title">Laser Cutting</h3><p class="card-text">Precision to 0.1mm, any configuration</p></div>
-          <div class="card"><div class="card-icon">🏗️</div><h3 class="card-title">Metal Structures</h3><p class="card-text">Stairs, gates, railings, security fencing</p></div>
-          <div class="card"><div class="card-icon">🔩</div><h3 class="card-title">Turning</h3><p class="card-text">Custom precision parts to your drawing</p></div>
-        </div>
-      </div>
-    </section>
-    <section class="page" data-index="2" id="portfolio">
-      <div class="section-content">
-        <div class="section-header reveal-3d"><h2 class="section-title">COMPLETED PROJECTS</h2><p class="section-subtitle">Work that speaks for itself</p></div>
-        <div class="cards-grid reveal-3d">
-          <div class="card"><div class="card-icon">🪜</div><h3 class="card-title">Metal Staircase</h3><p class="card-text">Private residence, stainless steel</p></div>
-          <div class="card"><div class="card-icon">🚧</div><h3 class="card-title">Industrial Gates</h3><p class="card-text">Automated, 6×4m, factory entrance</p></div>
-          <div class="card"><div class="card-icon">🎨</div><h3 class="card-title">Decorative Grille</h3><p class="card-text">Artistic forging, bespoke design</p></div>
-          <div class="card"><div class="card-icon">🏭</div><h3 class="card-title">Steel Frame</h3><p class="card-text">Industrial facility, 200-tonne structure</p></div>
-        </div>
-      </div>
-    </section>
-    <section class="page" data-index="3" id="process">
-      <div class="section-content">
-        <div class="section-header reveal-3d"><h2 class="section-title">HOW WE WORK</h2></div>
-        <div class="process-steps reveal-3d">
-          <div class="step"><div class="step-num">01</div><div class="step-icon">📐</div><h3 class="step-title">Technical Brief</h3><p class="step-text">Receive drawings or design from scratch</p></div>
-          <div class="step-arrow">→</div>
-          <div class="step"><div class="step-num">02</div><div class="step-icon">📊</div><h3 class="step-title">Quote</h3><p class="step-text">Precise cost within 1 working day</p></div>
-          <div class="step-arrow">→</div>
-          <div class="step"><div class="step-num">03</div><div class="step-icon">🔧</div><h3 class="step-title">Production</h3><p class="step-text">Own workshop, quality control at every stage</p></div>
-          <div class="step-arrow">→</div>
-          <div class="step"><div class="step-num">04</div><div class="step-icon">🚛</div><h3 class="step-title">Delivery</h3><p class="step-text">Delivered and installed across Russia</p></div>
-        </div>
-      </div>
-    </section>
-    <section class="page" data-index="4" id="about">
-      <div class="section-content">
-        <div class="section-header reveal-3d"><h2 class="section-title">THE PLANT</h2><p class="section-subtitle">Metalworking facility since 2008</p></div>
-        <div class="about-layout reveal-3d">
-          <div class="about-text">
-            <p>STEEL FORGE is a full-cycle production facility. Own equipment park, certified welders grade 5–6, quality control at every stage of production.</p>
-            <p>We handle projects from small decorative details to large-scale industrial structures. ISO 9001 certified.</p>
-            <div class="about-stats">
-              <div class="stat"><span class="stat-num" style="color:#FF6B35">16</span><span class="stat-label">years</span></div>
-              <div class="stat"><span class="stat-num" style="color:#FF6B35">3000+</span><span class="stat-label">objects</span></div>
-              <div class="stat"><span class="stat-num" style="color:#FF6B35">45</span><span class="stat-label">specialists</span></div>
-              <div class="stat"><span class="stat-num" style="color:#FF6B35">ISO</span><span class="stat-label">9001</span></div>
+  <div class="drawer-overlay" id="drawer-overlay"></div>
+
+  <div id="ui-layer">
+    <div class="stage">
+
+      <!-- ═══ SECTION 0: HERO ═══ -->
+      <section class="page is-active" data-index="0" id="hero">
+        <div class="hero-content">
+          <div class="hero-badge reveal-3d">&#9889; METALWORKING &middot; SINCE 2008</div>
+          <h1 class="hero-title reveal-3d">
+            STEEL<br><span class="accent">FORGE</span>
+          </h1>
+          <p class="hero-sub reveal-3d">Metal. Precision. Strength.</p>
+          <p class="hero-desc reveal-3d">
+            Welding, steel fabrication, laser cutting.<br>
+            From blueprint to installation.
+          </p>
+          <div class="hero-btns reveal-3d">
+            <a href="#services" class="btn btn-primary">Our Services</a>
+            <a href="#contact" class="btn btn-outline">&#128222; Contact Us</a>
+          </div>
+          <div class="hero-facts reveal-3d">
+            <div class="hero-fact">
+              <span class="fact-num">16</span>
+              <span class="fact-label">years in business</span>
+            </div>
+            <div class="hero-divider"></div>
+            <div class="hero-fact">
+              <span class="fact-num">3000+</span>
+              <span class="fact-label">projects delivered</span>
+            </div>
+            <div class="hero-divider"></div>
+            <div class="hero-fact">
+              <span class="fact-num">45</span>
+              <span class="fact-label">specialists</span>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-    <section class="page" data-index="5" id="contact">
-      <div class="section-content">
-        <div class="section-header reveal-3d"><h2 class="section-title">GET A QUOTE</h2><p class="section-subtitle">Send drawings — reply in 1 hour</p></div>
-        <div class="contact-layout reveal-3d">
-          <div class="contact-info">
-            <div class="contact-item"><span class="contact-icon">📞</span><a href="tel:+79054991618">+7 (905) 499-16-18</a></div>
-            <div class="contact-item"><span class="contact-icon">✉️</span><a href="mailto:team@globalplus.tech">order@steelforge.ru</a></div>
-            <div class="contact-item"><span class="contact-icon">📍</span><span>St. Petersburg, Industrial St., 7</span></div>
-            <div class="contact-item"><span class="contact-icon">🕐</span><span>Mon–Fri: 8:00–18:00</span></div>
-          </div>
-          
+        <div class="scroll-hint">
+          <span>SCROLL DOWN</span>
+          <div class="scroll-arrow"></div>
         </div>
-        <footer class="site-footer"><p>© 2024 STEEL FORGE. All rights reserved.</p></footer>
-      </div>
-    </section>
-  </div></div>
+      </section>
+
+      <!-- ═══ SECTION 1: SERVICES ═══ -->
+      <section class="page" data-index="1" id="services">
+        <div class="section-inner">
+          <div class="section-header reveal-3d">
+            <div class="section-tag">WHAT WE DO</div>
+            <h2 class="section-title">SERVICES</h2>
+            <p class="section-subtitle">Full-cycle metal fabrication</p>
+          </div>
+          <div class="cards-grid reveal-3d">
+
+            <div class="card">
+              <div class="card-icon">&#9881;&#65039;</div>
+              <div class="card-corner"></div>
+              <h3 class="card-title">Welding</h3>
+              <p class="card-desc">TIG, MIG, MAG welding of all metals. Argon arc, semi-automatic, and manual arc welding. Certified welders with Grade 5–6 qualifications.</p>
+              <div class="card-tag">TIG &middot; MIG &middot; MAG</div>
+            </div>
+
+            <div class="card">
+              <div class="card-icon">&#128300;</div>
+              <div class="card-corner"></div>
+              <h3 class="card-title">Laser Cutting</h3>
+              <p class="card-desc">Precision down to 0.1 mm, any configuration. Steel, stainless steel, aluminum. Sheet thickness up to 20 mm.</p>
+              <div class="card-tag">&plusmn;0.1mm &middot; ANY METAL</div>
+            </div>
+
+            <div class="card">
+              <div class="card-icon">&#127959;&#65039;</div>
+              <div class="card-corner"></div>
+              <h3 class="card-title">Structural Steelwork</h3>
+              <p class="card-desc">Staircases, gates, canopies, railings. From sketch to finished structure with on-site installation.</p>
+              <div class="card-tag">DESIGN &middot; FABRICATION &middot; INSTALLATION</div>
+            </div>
+
+            <div class="card">
+              <div class="card-icon">&#128297;</div>
+              <div class="card-corner"></div>
+              <h3 class="card-title">CNC Machining</h3>
+              <p class="card-desc">Parts of any complexity from blueprints. Milling, boring, threading. One-off orders and series production.</p>
+              <div class="card-tag">CUSTOM &middot; SERIES</div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ SECTION 2: PORTFOLIO ═══ -->
+      <section class="page" data-index="2" id="portfolio">
+        <div class="section-inner">
+          <div class="section-header reveal-3d">
+            <div class="section-tag">OUR WORK</div>
+            <h2 class="section-title">COMPLETED<br>PROJECTS</h2>
+            <p class="section-subtitle">The results speak for themselves</p>
+          </div>
+          <div class="portfolio-grid reveal-3d">
+
+            <div class="portfolio-card">
+              <div class="portfolio-num">01</div>
+              <div class="portfolio-badge">RESIDENTIAL</div>
+              <h3 class="portfolio-title">Steel-Frame Staircase</h3>
+              <p class="portfolio-desc">AISI 304 stainless steel, glass railings, oak treads. Installation completed in 3 days.</p>
+              <div class="portfolio-meta">
+                <span>Stainless Steel</span><span>&bull;</span><span>Custom Order</span>
+              </div>
+            </div>
+
+            <div class="portfolio-card portfolio-card--large">
+              <div class="portfolio-num">02</div>
+              <div class="portfolio-badge">INDUSTRIAL</div>
+              <h3 class="portfolio-title">Industrial Gates</h3>
+              <p class="portfolio-desc">Automatic sectional gates 6&times;4 m. CAME drive, remote control. 45 mm insulated panel.</p>
+              <div class="portfolio-meta">
+                <span>6&times;4 meters</span><span>&bull;</span><span>Automated</span>
+              </div>
+            </div>
+
+            <div class="portfolio-card">
+              <div class="portfolio-num">03</div>
+              <div class="portfolio-badge">DESIGN</div>
+              <h3 class="portfolio-title">Decorative Grille</h3>
+              <p class="portfolio-desc">Artistic forging from a custom sketch. Hot forging, patina finish, lacquer coating.</p>
+              <div class="portfolio-meta">
+                <span>Artistic Forging</span><span>&bull;</span><span>Exclusive</span>
+              </div>
+            </div>
+
+            <div class="portfolio-card">
+              <div class="portfolio-num">04</div>
+              <div class="portfolio-badge">INDUSTRIAL</div>
+              <h3 class="portfolio-title">Steel Beams</h3>
+              <p class="portfolio-desc">Load-bearing steel structures for an industrial facility. 200 tons of steel, delivered in 45 working days.</p>
+              <div class="portfolio-meta">
+                <span>200 tons</span><span>&bull;</span><span>45 days</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ SECTION 3: PROCESS ═══ -->
+      <section class="page" data-index="3" id="process">
+        <div class="section-inner">
+          <div class="section-header reveal-3d">
+            <div class="section-tag">OUR METHODOLOGY</div>
+            <h2 class="section-title">HOW WE WORK</h2>
+          </div>
+          <div class="process-grid reveal-3d">
+
+            <div class="process-step">
+              <div class="step-icon">&#128208;</div>
+              <div class="step-num">01</div>
+              <h3 class="step-title">Technical Brief</h3>
+              <p class="step-desc">We accept your blueprints or develop them from scratch. We work with DWG, PDF, DXF formats. Free on-site assessment.</p>
+            </div>
+
+            <div class="process-step">
+              <div class="step-icon">&#128202;</div>
+              <div class="step-num">02</div>
+              <h3 class="step-title">Estimate & Quote</h3>
+              <p class="step-desc">Accurate pricing within 1 business day. Fixed price in contract — no hidden charges.</p>
+            </div>
+
+            <div class="process-step">
+              <div class="step-icon">&#128295;</div>
+              <div class="step-num">03</div>
+              <h3 class="step-title">Fabrication</h3>
+              <p class="step-desc">Our own 2,500 m² workshop. Quality control at every stage. Photo reports throughout the process.</p>
+            </div>
+
+            <div class="process-step">
+              <div class="step-icon">&#128667;</div>
+              <div class="step-num">04</div>
+              <h3 class="step-title">Delivery & Installation</h3>
+              <p class="step-desc">We deliver and install nationwide. In-house transport fleet and professional installation crew.</p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ SECTION 4: ABOUT ═══ -->
+      <section class="page" data-index="4" id="about">
+        <div class="section-inner about-inner">
+          <div class="about-left reveal-3d">
+            <div class="section-tag">STEEL FORGE</div>
+            <h2 class="section-title">ABOUT US</h2>
+            <p class="about-sub">Full-cycle metal fabrication since 2008</p>
+            <p class="about-text">
+              STEEL FORGE is a full-cycle fabrication facility. Our own fleet of equipment, certified welders with Grade 5–6 qualifications, and quality control at every stage. We are not subcontractors — we do everything in-house.
+            </p>
+            <p class="about-text">
+              ISO 9001 certified. We work with private clients, construction companies, and industrial enterprises across the globe.
+            </p>
+            <a href="#contact" class="btn btn-primary about-cta">Discuss Your Project</a>
+          </div>
+          <div class="about-right reveal-3d">
+            <div class="stats-grid">
+              <div class="stat-card">
+                <div class="stat-num">16</div>
+                <div class="stat-label">years in business</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-num">3000+</div>
+                <div class="stat-label">projects delivered</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-num">45</div>
+                <div class="stat-label">specialists</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-num">ISO</div>
+                <div class="stat-label">9001 certified</div>
+              </div>
+            </div>
+            <div class="cert-strip">
+              <span>&#10003; ISO 9001</span>
+              <span>&#10003; AWS D1.1</span>
+              <span>&#10003; ASME</span>
+              <span>&#10003; EN 1090</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ SECTION 5: CONTACT ═══ -->
+      <section class="page" data-index="5" id="contact">
+        <div class="section-inner contact-inner">
+          <div class="section-header reveal-3d">
+            <div class="section-tag">GET IN TOUCH</div>
+            <h2 class="section-title">WANT A WEBSITE LIKE THIS?</h2>
+          </div>
+          <div class="contact-layout reveal-3d" style="display:flex;justify-content:center;">
+            <div class="contact-info-card">
+              <h3 style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:0.1em;color:#ff6b35;margin-bottom:24px;text-align:center;">Contact us — we'll build one for you</h3>
+              <div class="contact-item">
+                <span class="contact-icon">✉️</span>
+                <div>
+                  <strong style="display:block;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:#ff6b35;margin-bottom:4px;">Email</strong>
+                  <a href="mailto:contact@unityspiritpartners.com" class="contact-val">contact@unityspiritpartners.com</a>
+                </div>
+              </div>
+              <div class="contact-item">
+                <span class="contact-icon">🌐</span>
+                <div>
+                  <strong style="display:block;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:#ff6b35;margin-bottom:4px;">Website</strong>
+                  <a href="https://unityspiritpartners.com" target="_blank" class="contact-val">unityspiritpartners.com</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="text-align:center;margin-top:32px" class="reveal-3d">
+            <a href="https://unityspiritpartners.com/#page-4" class="btn btn-outline" style="font-size:16px;padding:14px 40px;display:inline-block;text-decoration:none">BACK TO MAIN PAGE</a>
+          </div>
+
+          <div class="footer-line reveal-3d">
+            <div class="footer-brand">STEEL FORGE</div>
+            <div class="footer-copy">&copy; 2024 STEEL FORGE. Sample site by Unity Spirit Partners.</div>
+            <div class="footer-tags">Precision Metalworking &middot; Worldwide</div>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /stage -->
+  </div><!-- /ui-layer -->
+
   <script src="app.js"></script>
 </body>
 </html>
