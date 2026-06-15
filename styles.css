@@ -1,4 +1,4 @@
-/* ═══════════════════════════════════════════════
+﻿/* ═══════════════════════════════════════════════
    STEEL FORGE — styles.css
    Industrial Orange Theme | Bebas Neue + Roboto
    Version: RU | v1.0
@@ -785,7 +785,7 @@ img { display: block; max-width: 100%; }
   left: 12%; right: 12%;
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--accent), transparent);
-  opacity: 0.4;
+  opacity: 1;
 }
 
 .process-step {
