@@ -40,8 +40,6 @@ let loadedCount = 0;
 let isReady     = false;
 let preloaderDismissed = false;
 const PRELOADER_THRESHOLD = 15;
-let preloaderDismissed = false;
-const PRELOADER_THRESHOLD = 15;
 let animStarted = false;
 
 function frameName(i) {
