@@ -40,6 +40,8 @@ let loadedCount = 0;
 let isReady     = false;
 let preloaderDismissed = false;
 const PRELOADER_THRESHOLD = 15;
+let preloaderDismissed = false;
+const PRELOADER_THRESHOLD = 15;
 let animStarted = false;
 
 function frameName(i) {
@@ -80,10 +82,10 @@ async function loadAll() {
             if (txt) txt.textContent = 'Loading video ' + realPct + '%';
             if (realPct >= 100) {
               const sbar = document.getElementById('siteLoadingBar');
+              if (txt) txt.textContent = 'Loading complete';
               if (sbar) { sbar.classList.add('done'); setTimeout(() => sbar.remove(), 800); }
             }
           }
-          resolve();
         };
         img.src = frameName(i);
       });
